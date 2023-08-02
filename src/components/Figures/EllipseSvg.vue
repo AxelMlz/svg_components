@@ -1,7 +1,6 @@
 <template>
-    <rect :width="Math.abs(drawing.width) + '%'" v-show="dessins_VU" :height="Math.abs(drawing.height) + '%'"
-        :x="drawing.centerX - drawing.width / 2 + '%'" :y="drawing.centerY - drawing.height / 2 + '%'"
-        :fill="getFillColor(drawing)" :stroke="getStrokeColor(drawing)" :stroke-width="drawing.strokeWidth === 0 ? 1 : drawing.strokeWidth + '%'
+    <ellipse :rx="abs(drawing.width / 2) + '%'" :ry="abs(drawing.height / 2) + '%'" :cx="drawing.centerX + '%'"
+        :cy="drawing.centerY + '%'" :fill="getFillColor(drawing)" :stroke="getStrokeColor(drawing)" :stroke-width="drawing.strokeWidth === 0 ? 1 : drawing.strokeWidth + '%'
             " :opacity="drawing.alpha / 255" :transform="'rotate(' +
         drawing.angle +
         ' ' +
@@ -14,8 +13,7 @@
 <script>
 
 export default {
-    name: "RectSvg",
-
+    name: "EllipseSvg",
     props: {
         drawing: Object,
         imageWidth: Number,
@@ -42,10 +40,9 @@ export default {
             }
             return "#00000000";
         },
-
-        created() {
-            console.log(this.drawing)
-        }
+        abs(val) {
+            return Math.abs(val);
+        },
     }
 }
 </script>

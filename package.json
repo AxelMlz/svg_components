@@ -1,5 +1,5 @@
 {
-  "name": "@axel_m/svg_components",
+  "name": "@axel_mlz/svg_components",
   "version": "0.0.1",
   "main": "dist/svg_components.common.js",
   "module": "dist/svg_components.umd.min.js",

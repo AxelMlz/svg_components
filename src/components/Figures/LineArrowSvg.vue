@@ -1,21 +1,18 @@
 <template>
-    <rect :width="Math.abs(drawing.width) + '%'" v-show="dessins_VU" :height="Math.abs(drawing.height) + '%'"
-        :x="drawing.centerX - drawing.width / 2 + '%'" :y="drawing.centerY - drawing.height / 2 + '%'"
-        :fill="getFillColor(drawing)" :stroke="getStrokeColor(drawing)" :stroke-width="drawing.strokeWidth === 0 ? 1 : drawing.strokeWidth + '%'
-            " :opacity="drawing.alpha / 255" :transform="'rotate(' +
-        drawing.angle +
-        ' ' +
-        (drawing.centerX * imageWidth) / 100 +
-        ' ' +
-        (drawing.centerY * imageHeight) / 100 +
-        ')'
-        " />
+    <line v-if="drawing.type === 'line'" :x1="`${drawing.centerX - drawing.width / 2}%`" :y1="`${drawing.centerY}%`"
+        :x2="`${drawing.centerX + drawing.width / 2}%`" :y2="`${drawing.centerY}%`" :stroke="getStrokeColor(drawing)"
+        :stroke-width="(drawing.strokeWidth === 0) ? 1 : drawing.strokeWidth + '%'" :opacity="drawing.alpha / 255"
+        :angle="`${drawing.angle}`" :transform="'rotate(' + (drawing.angle) + ' ' +
+            (drawing.centerX * imageWidth) / 100 +
+            ' ' +
+            (drawing.centerY * imageHeight) / 100 +
+            ')'
+            " />
 </template>
 <script>
 
 export default {
-    name: "RectSvg",
-
+    name: "LineArrowSvg",
     props: {
         drawing: Object,
         imageWidth: Number,
